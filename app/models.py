@@ -1,13 +1,13 @@
 import re
 
-class User ():
-    def __init__ (self, id, first_name, last_name, phone, email, score=0):
-        self.id = id
+class User:
+    def __init__ (self, user_id, first_name, last_name, age, email, phone):
+        self.user_id = user_id
         self.first_name = first_name
         self.last_name = last_name
-        self.phone = phone
+        self.age = age
         self.email = email
-        self.score = score
+        self.phone = phone
     @staticmethod
     def is_valid_email(email):
         """Validates an email address using a regular expression."""
@@ -21,3 +21,19 @@ class User ():
         if re.match(r'^\+?[1-9][0-9]{7,14}$',phone):
             return True
         return False
+
+
+class Workouts:
+    def __init__ (self, user_check_id, weight, workouts, goal):
+        self.user_check_id = user_check_id
+        self.weight = weight
+        self.workouts = workouts
+        self.goal = goal
+    def quantity_workouts(self, n):
+        self.workouts = int(self.workouts) + int(n)
+        return None
+    def new_weight(self, new_weight):
+        self.weight = new_weight
+        return None
+
+

@@ -1,5 +1,6 @@
 import re
-from app import USERS, STATISTICS
+from app import USERS, STATISTICS, WORKOUTS
+import random
 
 class User:
     def __init__ (self, user_id, first_name, last_name, age, email, phone):
@@ -70,10 +71,61 @@ class Statistics:
 
     @staticmethod
     def is_statistics_exists(check_id):
-        for user in STATISTICS:
-            if user.user_id == check_id:
+        for statistic in STATISTICS:
+            if statistic.user_id == check_id:
                 return True
         return False
+
+class Workout:
+    def __init__(self, workout_number, hands, abdominal, back, legs):
+        self.workout_number = workout_number
+        self.hands = hands
+        self.abdominal = abdominal
+        self.back = back
+        self.legs = legs
+
+    def edit_exersice_hands(self, new_hands):
+        self.hands = new_hands
+        return None
+
+    def edit_exersice_abdominal(self, new_abdominal):
+        self.abdominal = new_abdominal
+        return None
+
+    def edit_exersice_back(self, new_back):
+        self.back = new_back
+        return None
+
+    def edit_exersice_legs(self, new_legs):
+        self.legs = new_legs
+        return None
+
+    @staticmethod
+    def is_workout_exists(check_id, workout_number):
+        for workout in WORKOUTS[check_id]:
+            if workout.workout_number == workout_number:
+                return True
+        return False
+
+    @staticmethod
+    def make_workout(user_id):
+        workout = random.choice(WORKOUTS[user_id])
+        MODES = ['easy', 'average', 'heavy']
+        training_mode = random.choice(MODES)
+        if training_mode == 'easy':
+            repetitions = random.randint(20,25)
+            sets = random.randint(4,5)
+        if training_mode == 'average':
+            repetitions = random.randint(12, 15)
+            sets = random.randint(3, 4)
+        if training_mode == ('heavy'):
+            repetitions = random.randint(5,7)
+            sets = random.randint(2,3)
+        return [workout, training_mode, repetitions, sets]
+
+
+
+
 
 
 

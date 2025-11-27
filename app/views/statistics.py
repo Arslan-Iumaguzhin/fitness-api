@@ -118,3 +118,33 @@ def get_statistics(user_id):
         status=HTTPStatus.OK,
         mimetype="application/json",
     )
+
+@app.delete("/user/statistics/delete/<int:user_id>")
+def delete_statistics(user_id):
+    if not models.Statistics.is_id_exists(user_id):
+        return Response(
+            json.dumps({
+                "error": "User does not exist",
+            }),
+            status=HTTPStatus.BAD_REQUEST,
+            mimetype="application/json",
+        )
+    if not models.Statistics.is_statistics_exists(user_id):
+        return Response(
+            json.dumps({
+                "error": "Statistics does not exist",
+            }),
+            status=HTTPStatus.BAD_REQUEST,
+            mimetype="application/json",
+        )
+
+    statistic = STATISTICS[user_id]
+    statistic.status = "deleted"
+    return Response(
+        json.dumps({
+            "RESPONSE": "STATISTICS DELETED",
+            "id": statistic.user_id,
+        }),
+        status=HTTPStatus.OK,
+        mimetype="application/json",
+    )

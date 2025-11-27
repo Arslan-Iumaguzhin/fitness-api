@@ -57,6 +57,7 @@ class Statistics:
         self.average_workouts = average_workouts
         self.heavy_workouts = heavy_workouts
         self.workouts_list = workouts_list
+        self.status = "created"
 
     def quantity_workouts(self, new_workouts):
         self.total_workouts = str(int(self.total_workouts) + int(new_workouts))
@@ -120,14 +121,14 @@ class Statistics:
     @staticmethod
     def is_id_exists(check_id):
         for user in USERS:
-            if user.user_id == check_id:
+            if user.user_id == check_id and user.status == "created":
                 return True
         return False
 
     @staticmethod
     def is_statistics_exists(check_id):
         for statistic in STATISTICS:
-            if statistic.user_id == check_id:
+            if statistic.user_id == check_id and statistic.status == "created":
                 return True
         return False
 

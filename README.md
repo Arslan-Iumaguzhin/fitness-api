@@ -83,13 +83,13 @@ Response example:
 Request example:
 '''json
 {
-    user_id : "id",
-    weight : "number",
-    goal : "string",
-    total_workouts : "number",
-    easy_workouts : "number",
-    average_workouts : "number",
-    heavy_workouts : "number",
+    "id" : "id",
+    "weight" : "number",
+    "goal" : "string",
+    "total_workouts" : "number",
+    "easy_workouts" : "number",
+    "average_workouts" : "number",
+    "heavy_workouts" : "number",
 }
 '''
 

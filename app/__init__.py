@@ -8,5 +8,5 @@ WORKOUTS = [] #база данных тренировок, записанных 
 for _ in range (100000):
     WORKOUTS.append([])
 
-from app import views
 from app import models
+from app import views
